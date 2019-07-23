@@ -46,7 +46,7 @@ if __name__ == '__main__':
     qry_img_kp = draw_keypoints(qry_img_path, qry_kp)
     trg_img_kp = draw_keypoints(trg_img_path, trg_kp)
     img2display = np.concatenate((qry_img_kp, trg_img_kp), axis = 1)
-    cv2.imshow('window', img2display)
+    cv2.imshow('Keypoints detected', img2display)
     cv2.waitKey(0)
 
     # Plot only the keypoints in the common region
@@ -55,7 +55,6 @@ if __name__ == '__main__':
     qry_img_kp_overlap = draw_keypoints(qry_img_path, qry_kp_overlap)
     trg_img_kp_overlap = draw_keypoints(trg_img_path, trg_kp_overlap)
     img2display = np.concatenate((qry_img_kp_overlap, trg_img_kp_overlap), axis = 1)
-    cv2.imshow('window', img2display)
+    cv2.imshow('Keypoints in common region', img2display)
     cv2.waitKey(0)
 
-    
