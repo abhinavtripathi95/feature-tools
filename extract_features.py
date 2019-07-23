@@ -35,13 +35,21 @@ def extract_features(img_path, features):
 
     elif detector == 'superpoint':
         #TODO: Replace VideoStreamer by a function that reads a single image
-        vs = VideoStreamer(img_path, 0, img_shape[0], img_shape[1], 1, '*.png')
-        img, status = vs.next_frame()
+        img_path_superpoint = 'images'
+        vs = VideoStreamer(img_path_superpoint, 0, img_shape[0], img_shape[1], 1, '*.ppm')
+        if img_path == 'images/ref.ppm':
+            img, status = vs.next_frame() 
+        else:
+            img, status = vs.next_frame()
+            img, status = vs.next_frame()
+        print(img.shape)
+        # cv2.imshow('window',img)
+        # cv2.waitKey(0)
         pts, descr, heatmap = detector_loaded.run(img)
         keypoints = pts.T[:,0:2]
         descr = descr.T
         # print (descr)
-        # print(descr.shape)        
+        print(descr.shape)        
 
     elif detector == 'd2net':
         # <-- D2Net Default Parameters
@@ -73,7 +81,7 @@ def save_features(img_name, kp, descr):
     cache.append(img_name)
     cache.append(kp)
     cache.append(descr)
-    print('----SAVING KEYPOINTS AND DESCRIPTORS----')
+    print('----SAVING RESULTS IN PICKLE FILE----')
     file_path = results_dir + '/' + img_name + '_pickle_file'
     with open(file_path, 'wb') as f:
         pickle.dump(cache, f)
