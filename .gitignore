@@ -1,0 +1,9 @@
+# models
+d2net/d2_tf.pth
+superpoint/superpoint_v1.pth
+lift/models
+sfop/build
+
+# random crap
+__pycache__
+*/__pycache__
