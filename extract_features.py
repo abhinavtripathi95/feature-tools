@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import argparse
 import pickle
+import os
 
 # GLOBAL VARIABLES
 detector_loaded = None
@@ -64,6 +65,7 @@ def extract_features(img_path, features):
         kps = get_lift_orientation(param, pathconf, new_kp_list, img_path)
         keypoints, descr = get_lift_features(param, pathconf, kps, img_path)
 
+    return keypoints, descr
 
 
 def save_features(img_name, kp, descr):
