@@ -149,7 +149,7 @@ if __name__ == '__main__':
             os.makedirs(results_dir)
 
         qry_img_name = 'ref.ppm'
-        trg_img_name = 'tar.ppm'
+        trg_img_name = 'trg.ppm'
 
         # Input Variables: a reference image and a target image
         qry_img_path = 'images/' + qry_img_name
