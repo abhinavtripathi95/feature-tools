@@ -7,3 +7,6 @@ sfop/build
 # random crap
 __pycache__
 */__pycache__
+
+# results
+results
