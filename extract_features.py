@@ -73,12 +73,13 @@ def extract_features(img_path, features):
         kps = get_lift_orientation(param, pathconf, new_kp_list, img_path)
         keypoints, descr = get_lift_features(param, pathconf, kps, img_path)
 
-    return keypoints, descr
+    return keypoints, descr, img_shape
 
 
-def save_features(img_name, kp, descr):
+def save_features(img_name, img_shape, kp, descr):
     cache = []
     cache.append(img_name)
+    cache.append(img_shape)
     cache.append(kp)
     cache.append(descr)
     print('----SAVING RESULTS IN PICKLE FILE----')
@@ -155,11 +156,11 @@ if __name__ == '__main__':
         qry_img_path = 'images/' + qry_img_name
         trg_img_path = 'images/' + trg_img_name
 
-        qry_kp, qry_descr = extract_features(qry_img_path, options.features)
-        trg_kp, trg_descr = extract_features(trg_img_path, options.features)
+        qry_kp, qry_descr, qry_img_shape = extract_features(qry_img_path, options.features)
+        trg_kp, trg_descr, trg_img_shape = extract_features(trg_img_path, options.features)
 
-        save_features(qry_img_name, qry_kp, qry_descr)
-        save_features(trg_img_name, trg_kp, trg_descr)
+        save_features(qry_img_name, qry_img_shape, qry_kp, qry_descr)
+        save_features(trg_img_name, qry_img_shape, trg_kp, trg_descr)
 
             
 
