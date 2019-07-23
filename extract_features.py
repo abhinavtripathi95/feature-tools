@@ -74,7 +74,7 @@ def save_features(img_name, kp, descr):
     cache.append(kp)
     cache.append(descr)
     print('----SAVING KEYPOINTS AND DESCRIPTORS----')
-    file_path = results_dir + '/' + img_name
+    file_path = results_dir + '/' + img_name + '_pickle_file'
     with open(file_path, 'wb') as f:
         pickle.dump(cache, f)
 
